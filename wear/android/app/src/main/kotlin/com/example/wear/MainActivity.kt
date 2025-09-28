@@ -1,4 +1,4 @@
-package com.example.wear
+package com.example.project
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
