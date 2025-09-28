@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.project">
+
+    <!-- 네트워크 & 알림 권한 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Android 13+ 알림 런타임 권한 -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- 카메라 & 갤러리 접근 (SDK별 분기) -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Android 13+ 미디어 읽기 -->
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES"
+        tools:targetApi="33" />
+    <!-- Android 12L 이하 외부저장소(갤러리) 읽기 -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <!-- (선택) 알림 신뢰성/도착률 보완시 사용 -->
+    <!-- <uses-permission android:name="android.permission.WAKE_LOCK" /> -->
+
+    <application
+        android:name="${applicationName}"
+        android:label="오늘도펫"
+        android:icon="@mipmap/ic_launcher">
+
+        <!-- Kakao SDK 앱키 -->
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_native_app_key" />
+
+        <!-- FCM 기본 알림 채널: 코드의 'default_channel'과 동일해야 함 -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="default_channel" />
+
+        <!-- (선택) 기본 알림 아이콘/색 지정 가능
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/purple_500" />
+        -->
+
+        <!-- Flutter embedding v2 -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode">
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Kakao 로그인 커스텀 탭 리다이렉트 -->
+        <activity
+            android:name="com.kakao.sdk.flutter.AuthCodeCustomTabsActivity"
+            android:exported="true">
+            <intent-filter android:label="flutter_web_auth">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- .env로부터 KAKAO_SCHEME 값을 gradle에서 주입했다는 가정 -->
+                <data android:scheme="${KAKAO_SCHEME}" android:host="oauth" />
+            </intent-filter>
+        </activity>
+
+        <!-- Firebase는 google-services 플러그인이 필요한 구성요소를 자동 병합합니다 -->
+    </application>
+
+    <!-- Kakao Talk 쿼리 -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT" />
+            <data android:mimeType="text/plain" />
+        </intent>
+        <package android:name="com.kakao.talk" />
+    </queries>
+</manifest>

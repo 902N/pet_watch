@@ -1,0 +1,69 @@
+name: APP
+description: Kakao Login with Flutter
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  shared_preferences: ^2.2.3
+  cupertino_icons: ^1.0.8
+  flutter_dotenv: ^5.1.0
+  kakao_flutter_sdk_common: ^1.9.7
+  kakao_flutter_sdk_user: ^1.9.7
+  table_calendar: ^3.1.2
+  intl: ^0.20.2
+  drift: ^2.21.0
+  path_provider: ^2.1.5
+  path: ^1.9.0
+  get_it: ^8.0.2
+  dio: ^5.7.0
+  provider: ^6.1.2
+  flutter_svg: ^2.2.1
+  get: ^4.7.2
+  firebase_core: ^4.1.0
+  firebase_messaging: ^16.0.1
+  flutter_local_notifications: ^19.4.1
+  image_picker: ^1.1.2
+  http: ^1.2.2
+  url_launcher: ^6.3.2
+  animations: ^2.0.8
+  fl_chart: ^0.66.0
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.4.1
+  flutter_lints: ^6.0.0
+  drift_dev: ^2.21.0
+  build_runner: ^2.4.13
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "asset/icon/app_icon_fg.png"
+  adaptive_icon_background: "#E5D4FF"
+  adaptive_icon_foreground: "asset/icon/app_icon_fg.png"
+
+flutter_native_splash:
+  android: true
+  ios: true
+  fullscreen: true
+  color: "#E5D4FF"
+  background_image: asset/image/splash_full_center.png
+  android_12:
+    color: "#E5D4FF"
+    image: asset/image/splash_full_center.png
+
+flutter:
+  uses-material-design: true
+  assets:
+    - .env
+    - asset/icon/
+    - asset/image/
+    - asset/font/
