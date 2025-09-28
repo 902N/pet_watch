@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.wear"
+    namespace = "com.example.project"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
