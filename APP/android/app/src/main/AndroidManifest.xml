@@ -69,6 +69,14 @@
             </intent-filter>
         </activity>
 
+        <service
+            android:name=".WearableListenerService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
+            </intent-filter>
+        </service>
+
         <!-- Kakao 로그인 커스텀 탭 리다이렉트 -->
         <activity
             android:name="com.kakao.sdk.flutter.AuthCodeCustomTabsActivity"

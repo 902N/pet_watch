@@ -599,4 +599,4 @@ terraform.tfvars.secret
 *.auto.tfvars.secret
 
 # APP/lib은 반영되어야 함
-!APP/lib/
+!lib/
