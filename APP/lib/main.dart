@@ -11,6 +11,7 @@ import 'package:APP/login/login.dart';
 import 'package:APP/fcm/fcm_service.dart';
 import 'package:APP/widget/pet_id.dart';
 import 'package:APP/auth/auth_api.dart';
+import 'package:APP/wear_walk_auto_poster.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -77,6 +78,7 @@ Future<void> _safeInit() async {
   await FCMService.init();
   FcmUiBridge.setup();
   AuthApi.client;
+  WearWalkAutoPoster.initialize();
 }
 
 Future<void> main() async {
